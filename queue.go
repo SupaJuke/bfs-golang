@@ -1,26 +1,37 @@
 package main
 
+/* Node Part */
 type Node struct {
-	value    byte
+	value    string
 	parent   *Node
 	neighbor []*Node
 	depth    int
 }
 
-func makeNode(chars ...byte) []Node {
-	nodes := []Node{}
-	for _, c := range chars {
-		nodes = append(nodes, Node{
-			value:    c,
+func makeNode(chars []string) map[string]*Node {
+	nodes := map[string]*Node{}
+	for _, char := range chars {
+		nodes[char] = &Node{
+			value:    char,
 			parent:   nil,
-			neighbor: nil,
+			neighbor: []*Node{},
 			depth:    -1,
-		})
+		}
 	}
 	return nodes
 }
 
-// Queue = slice of pointers of Nodes
+func connectNodes(adjList map[string][]string, nodes map[string]*Node) {
+	for node, outNodes := range adjList { // map string to slice of string
+		for _, outNode := range outNodes { // slice of string
+			nodes[node].neighbor = append(nodes[node].neighbor, nodes[outNode])
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////
+
+/* Queue Part: Slice of Pointers of Nodes */
 
 // Insert a pointer to a node to the bottom of the queue
 func enqueue(queue []*Node, node *Node) []*Node {
