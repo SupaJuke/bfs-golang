@@ -1,5 +1,5 @@
 # bfs-golang
-This is my personal project of developing a bfs alrogithm using golang. The purpose of this project is for me to self-teach myself a new language (Golang) while also not be rusty in theory——the bfs algorithm.
+This is my personal project of developing a bfs alrogithm using golang. The purpose of this project is for me to self-teach myself a new language (Golang) while also not be rusty in theory—the bfs algorithm.
 
 ## Things to do
 1. <s>Have the program be able to execute on a graph represented by an adjacent list in a text format (.txt)</s> DONE!
